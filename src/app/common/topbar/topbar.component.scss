@@ -1,0 +1,41 @@
+/* Simple Topbar with Solid Color */
+.topbar {
+  width: 100%;
+  height: 4rem;
+  background-color: #0d6efd; 
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinear contenido al inicio (izquierda) */
+  padding: 0 1.5rem; /* Padding horizontal para separación */
+  
+  /* Alternative color options (uncomment to use): */
+  /* background-color: #3498db; */ /* Blue */
+  /* background-color: #e74c3c; */ /* Red */
+  /* background-color: #27ae60; */ /* Green */
+  /* background-color: #9b59b6; */ /* Purple */
+  /* background-color: #f39c12; */ /* Orange */
+}
+
+.school-icon {
+  width: 45px;
+  height: 45px;
+  background-image: url('/assets/icons/school_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 8px; 
+  margin-right: 1rem; 
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.topbar-title {
+  color: #ffffff; /* Texto en blanco para buen contraste */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Lato', sans-serif; /* Asegurar que use Lato */
+}
