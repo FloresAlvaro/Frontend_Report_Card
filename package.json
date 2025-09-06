@@ -11,7 +11,8 @@
     "lint": "eslint src/**/*.{ts,html}",
     "lint:fix": "eslint src/**/*.{ts,html} --fix",
     "format": "prettier --write src/**/*.{ts,html,scss,css,json}",
-    "format:check": "prettier --check src/**/*.{ts,html,scss,css,json}"
+    "format:check": "prettier --check src/**/*.{ts,html,scss,css,json}",
+    "format:scss": "prettier --write src/**/*.{scss,css}"
   },
   "prettier": {
     "printWidth": 100,
@@ -35,7 +36,9 @@
     "@angular/platform-server": "^20.2.0",
     "@angular/router": "^20.2.0",
     "@angular/ssr": "^20.2.1",
+    "@primeuix/themes": "^1.2.3",
     "express": "^5.1.0",
+    "primeng": "^20.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
