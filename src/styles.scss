@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+
+/* Import Google Fonts - Lato */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* Global Font Configuration - Lato */
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* PrimNG Font Override */
+:root {
+  --font-family: 'Lato', sans-serif;
+}
+
+/* Override PrimNG default fonts */
+.p-component {
+  font-family: 'Lato', sans-serif !important;
+}
+
+/* Font Weight Classes for easy usage */
+.font-thin { font-weight: 100; }
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-bold { font-weight: 700; }
+.font-black { font-weight: 900; }
+
+/* Font Style Classes */
