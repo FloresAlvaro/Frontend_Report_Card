@@ -9,4 +9,27 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.topbar-icon {
+  width: 45px;
+  height: 45px;
+  background-image: url('/assets/icons/school_icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 1rem;
+  display: inline-block;
+  flex-shrink: 0;
+  //padding: 0 1.5rem;
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.topbar-title {
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
 }
