@@ -1,0 +1,248 @@
+// Variables
+:host {
+  --role-primary-color: #0d6efd;
+  --role-success-color: #198754;
+  --role-warning-color: #fd7e14;
+  --role-danger-color: #dc3545;
+  --role-border-radius: 8px;
+  --role-spacing-xs: 0.5rem;
+  --role-spacing-sm: 0.75rem;
+  --role-spacing-md: 1rem;
+  --role-spacing-lg: 1.5rem;
+  --role-spacing-xl: 2rem;
+  --role-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Container principal
+.role-container {
+  padding: var(--role-spacing-lg);
+  background: #ffffff;
+  border-radius: var(--role-border-radius);
+  box-shadow: var(--role-shadow);
+  margin: var(--role-spacing-md);
+}
+
+// Header
+.role-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--role-spacing-xl);
+  padding-bottom: var(--role-spacing-md);
+  border-bottom: 2px solid #f8f9fa;
+
+  .role-title {
+    margin: 0;
+    color: #212529;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+}
+
+// Tabla
+:host ::ng-deep {
+  .p-datatable {
+    .p-datatable-header {
+      background: #f8f9fa;
+      border: 1px solid #dee2e6;
+    }
+
+    .p-datatable-thead > tr > th {
+      background: #e9ecef;
+      color: #495057;
+      font-weight: 600;
+      padding: var(--role-spacing-md);
+      border-bottom: 2px solid #dee2e6;
+    }
+
+    .p-datatable-tbody > tr > td {
+      padding: var(--role-spacing-md);
+      vertical-align: middle;
+    }
+
+    .p-datatable-tbody > tr:hover {
+      background: #f8f9fa;
+    }
+  }
+
+  // Botones de acción
+  .action-buttons {
+    display: flex;
+    gap: var(--role-spacing-xs);
+
+    .p-button {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  // Mensaje vacío
+  .empty-message {
+    text-align: center;
+    padding: var(--role-spacing-xl) !important;
+
+    .empty-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--role-spacing-sm);
+      color: #6c757d;
+
+      i {
+        font-size: 2rem;
+      }
+
+      span {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  // Estilos para modales
+  .p-dialog {
+    .p-dialog-header {
+      background: #f8f9fa;
+      border-bottom: 1px solid #dee2e6;
+      padding: var(--role-spacing-md) var(--role-spacing-lg);
+
+      .p-dialog-title {
+        font-weight: 600;
+        color: #212529;
+      }
+    }
+
+    .p-dialog-content {
+      padding: var(--role-spacing-lg);
+    }
+  }
+
+  // Toast personalizado
+  .p-toast {
+    .p-toast-message {
+      border-radius: var(--role-border-radius);
+      box-shadow: var(--role-shadow);
+    }
+  }
+}
+
+// Formularios
+.form-field {
+  margin-bottom: var(--role-spacing-lg);
+
+  label {
+    display: block;
+    margin-bottom: var(--role-spacing-xs);
+    font-weight: 500;
+    color: #495057;
+  }
+
+  .p-inputtext {
+    width: 100%;
+    padding: var(--role-spacing-sm);
+    border: 1px solid #ced4da;
+    border-radius: var(--role-border-radius);
+    transition: border-color 0.2s ease;
+
+    &:focus {
+      border-color: var(--role-primary-color);
+      box-shadow: 0 0 0 0.1rem rgba(13, 110, 253, 0.25);
+    }
+  }
+
+  .error-message {
+    display: block;
+    margin-top: var(--role-spacing-xs);
+    color: var(--role-danger-color);
+    font-size: 0.875rem;
+  }
+}
+
+// Opciones de estado (radio buttons)
+.status-options {
+  display: flex;
+  gap: var(--role-spacing-md);
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: var(--role-spacing-xs);
+    cursor: pointer;
+    padding: var(--role-spacing-xs);
+    border-radius: var(--role-border-radius);
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+
+    input[type='radio'] {
+      margin: 0;
+      cursor: pointer;
+    }
+
+    span {
+      font-size: 0.9rem;
+      color: #495057;
+    }
+  }
+}
+
+// Acciones del modal
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--role-spacing-sm);
+  margin-top: var(--role-spacing-xl);
+  padding-top: var(--role-spacing-md);
+  border-top: 1px solid #dee2e6;
+}
+
+// Clases de utilidad
+.w-full {
+  width: 100%;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .role-container {
+    margin: var(--role-spacing-xs);
+    padding: var(--role-spacing-md);
+  }
+
+  .role-header {
+    flex-direction: column;
+    gap: var(--role-spacing-md);
+    align-items: stretch;
+
+    .role-title {
+      text-align: center;
+      font-size: 1.25rem;
+    }
+  }
+
+  .action-buttons {
+    justify-content: center;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+
+    .p-button {
+      width: 100%;
+    }
+  }
+
+  :host ::ng-deep {
+    .p-dialog {
+      width: 95vw !important;
+      max-width: none !important;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .status-options {
+    flex-direction: column;
+    gap: var(--role-spacing-xs);
+  }
+}
