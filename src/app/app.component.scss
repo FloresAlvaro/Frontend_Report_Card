@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.app-wrapper {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+/* Ensure all child components have proper background */
+::ng-deep {
+  .role-container {
+    background-color: #ffffff !important;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Override any dark theme that might be applied */
+  .p-component {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+  }
+
+  .p-datatable {
+    background-color: #ffffff !important;
+  }
+
+  .p-datatable .p-datatable-tbody > tr {
+    background-color: #ffffff !important;
+    color: #212529 !important;
+  }
+
+  .p-dialog {
+    background-color: #ffffff !important;
+  }
+}
