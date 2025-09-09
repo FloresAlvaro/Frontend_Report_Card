@@ -41,10 +41,15 @@ export class RoleComponent implements OnInit {
   readonly showEditDialog = signal<boolean>(false);
   readonly selectedRole = signal<Role | null>(null);
 
-  // Form for create/edit
+  // Form for editing (includes name and status)
   roleForm: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     status: [true, Validators.required],
+  });
+
+  // Form for creating (only name field - status defaults to true)
+  createRoleForm: FormGroup = this.fb.group({
+    name: ['', [Validators.required, Validators.minLength(3)]],
   });
 
   // Status options for dropdown
@@ -78,7 +83,7 @@ export class RoleComponent implements OnInit {
   }
 
   openCreateDialog(): void {
-    this.roleForm.reset({ name: '', status: true });
+    this.createRoleForm.reset({ name: '' });
     this.showCreateDialog.set(true);
   }
 
@@ -93,7 +98,7 @@ export class RoleComponent implements OnInit {
 
   closeCreateDialog(): void {
     this.showCreateDialog.set(false);
-    this.roleForm.reset();
+    this.createRoleForm.reset();
   }
 
   closeEditDialog(): void {
@@ -103,8 +108,11 @@ export class RoleComponent implements OnInit {
   }
 
   createRole(): void {
-    if (this.roleForm.valid) {
-      const newRole: Partial<Role> = this.roleForm.value;
+    if (this.createRoleForm.valid) {
+      const newRole: Partial<Role> = {
+        name: this.createRoleForm.value.name,
+        status: true, // Always create with status true
+      };
       this.roleService.createRole(newRole).subscribe({
         next: (data) => {
           this.roles.update((current) => [...current, data]);

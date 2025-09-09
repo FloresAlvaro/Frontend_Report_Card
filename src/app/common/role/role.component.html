@@ -8,7 +8,12 @@
   <!-- Header con título y botón crear -->
   <div class="role-header">
     <h1 class="role-title">Gestión de Roles</h1>
-    <p-button label="Crear Rol" icon="pi pi-plus" severity="success" (onClick)="openCreateDialog()">
+    <p-button
+      label="Crear Rol"
+      icon="pi pi-plus"
+      styleClass="create-button"
+      (onClick)="openCreateDialog()"
+    >
     </p-button>
   </div>
 
@@ -40,18 +45,18 @@
         <td>
           <div class="action-buttons">
             <p-button
+              label="Editar"
               icon="pi pi-pencil"
-              severity="warn"
               size="small"
-              title="Editar"
+              styleClass="edit-button"
               (onClick)="openEditDialog(role)"
             >
             </p-button>
             <p-button
+              label="Eliminar"
               icon="pi pi-trash"
-              severity="danger"
               size="small"
-              title="Eliminar"
+              styleClass="delete-button"
               (onClick)="confirmDelete(role)"
             >
             </p-button>
@@ -72,17 +77,17 @@
     </ng-template>
   </p-table>
 
-  <!-- Modal para crear rol -->
+  <!-- Modal para crear rol (solo nombre) -->
   <p-dialog
     header="Crear Nuevo Rol"
     [modal]="true"
     [visible]="showCreateDialog()"
     (onHide)="closeCreateDialog()"
-    [style]="{ width: '450px' }"
+    [style]="{ width: '400px' }"
     [draggable]="false"
     [resizable]="false"
   >
-    <form [formGroup]="roleForm" (ngSubmit)="createRole()">
+    <form [formGroup]="createRoleForm" (ngSubmit)="createRole()">
       <div class="form-field">
         <label for="create-name">Nombre del Rol *</label>
         <input
@@ -93,30 +98,16 @@
           placeholder="Ingrese el nombre del rol"
           class="w-full"
         />
-        @if (roleForm.get('name')?.invalid && roleForm.get('name')?.touched) {
+        @if (createRoleForm.get('name')?.invalid && createRoleForm.get('name')?.touched) {
           <small class="error-message">
-            @if (roleForm.get('name')?.errors?.['required']) {
+            @if (createRoleForm.get('name')?.errors?.['required']) {
               El nombre es requerido
             }
-            @if (roleForm.get('name')?.errors?.['minlength']) {
+            @if (createRoleForm.get('name')?.errors?.['minlength']) {
               El nombre debe tener al menos 3 caracteres
             }
           </small>
         }
-      </div>
-
-      <div class="form-field">
-        <label for="create-status">Estado *</label>
-        <div class="status-options">
-          <label class="radio-option">
-            <input type="radio" formControlName="status" [value]="true" name="status" />
-            <span>Activo</span>
-          </label>
-          <label class="radio-option">
-            <input type="radio" formControlName="status" [value]="false" name="status" />
-            <span>Inactivo</span>
-          </label>
-        </div>
       </div>
 
       <div class="modal-actions">
@@ -127,7 +118,12 @@
           (onClick)="closeCreateDialog()"
         >
         </p-button>
-        <p-button label="Crear" severity="success" type="submit" [disabled]="roleForm.invalid">
+        <p-button
+          label="Crear"
+          severity="success"
+          type="submit"
+          [disabled]="createRoleForm.invalid"
+        >
         </p-button>
       </div>
     </form>
