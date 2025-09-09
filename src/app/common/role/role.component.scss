@@ -41,6 +41,12 @@
 
 // Tabla
 :host ::ng-deep {
+  // Tamaño uniforme para todos los botones
+  .p-button {
+    min-width: 100px;
+    height: 40px;
+  }
+
   // Botones con colores sólidos
   .create-button {
     background-color: #198754 !important;
@@ -88,17 +94,12 @@
   }
 
   .p-datatable {
-    .p-datatable-header {
-      background: #f8f9fa;
-      border: 1px solid #dee2e6;
-    }
-
     .p-datatable-thead > tr > th {
       background: #e9ecef;
       color: #495057;
       font-weight: 600;
       padding: var(--role-spacing-md);
-      border-bottom: 2px solid #dee2e6;
+      border-bottom: 1px solid #000000;
     }
 
     .p-datatable-tbody > tr > td {
@@ -116,10 +117,6 @@
     display: flex;
     gap: var(--role-spacing-xs);
     justify-content: center;
-
-    .p-button {
-      min-width: 80px;
-    }
   }
 
   // Mensaje vacío

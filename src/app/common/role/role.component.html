@@ -9,8 +9,7 @@
   <div class="role-header">
     <h1 class="role-title">Gestión de Roles</h1>
     <p-button
-      label="Crear Rol"
-      icon="pi pi-plus"
+      label="Crear"
       styleClass="create-button"
       (onClick)="openCreateDialog()"
     >
@@ -46,7 +45,6 @@
           <div class="action-buttons">
             <p-button
               label="Editar"
-              icon="pi pi-pencil"
               size="small"
               styleClass="edit-button"
               (onClick)="openEditDialog(role)"
@@ -54,7 +52,6 @@
             </p-button>
             <p-button
               label="Eliminar"
-              icon="pi pi-trash"
               size="small"
               styleClass="delete-button"
               (onClick)="confirmDelete(role)"
