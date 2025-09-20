@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Import Google Fonts - Lato */
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+/* Global Reset and Base Styles */
+* {
+  font-family: 'Lato', sans-serif;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-color: #ffffff;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #212529;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* App Container Styles */
+app-root {
+  display: block;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+/* PrimNG Theme Configuration */
+:root {
+  --font-family: 'Lato', sans-serif;
+  --surface-ground: #ffffff;
+  --surface-section: #ffffff;
+  --surface-card: #ffffff;
+  --surface-overlay: #ffffff;
+  --surface-border: #ddd;
+  --surface-hover: #f8f9fa;
+  --primary-color: #0d6efd;
+  --primary-color-text: #ffffff;
+}
+
+/* Override PrimNG default fonts and ensure white background */
+.p-component {
+  font-family: 'Lato', sans-serif !important;
+  background-color: var(--surface-card) !important;
+}
+
+/* Ensure all PrimeNG surfaces are white */
+.p-datatable {
+  background-color: #ffffff !important;
+}
+
+.p-datatable .p-datatable-header {
+  background-color: #f8f9fa !important;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+  background-color: #ffffff !important;
+}
+
+.p-dialog {
+  background-color: #ffffff !important;
+}
+
+.p-dialog .p-dialog-content {
+  background-color: #ffffff !important;
+}
+
+/* Font Weight Classes for easy usage */
+.font-thin {
+  font-weight: 100;
+}
+.font-light {
+  font-weight: 300;
+}
+.font-normal {
+  font-weight: 400;
+}
+.font-bold {
+  font-weight: 700;
+}
+.font-black {
+  font-weight: 900;
+}
+
+/* Container Wrapper */
+.app-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* Utility Classes */
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.text-dark {
+  color: #212529 !important;
+}

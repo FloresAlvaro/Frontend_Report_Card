@@ -1,0 +1,184 @@
+<div class="role-container">
+  <!-- Toast para notificaciones -->
+  <p-toast></p-toast>
+
+  <!-- Diálogo de confirmación -->
+  <p-confirmDialog></p-confirmDialog>
+
+  <!-- Header con título y botón crear -->
+  <div class="role-header">
+    <h1 class="role-title">Lista de Roles</h1>
+    <p-button
+      label="Crear"
+      styleClass="create-button"
+      (onClick)="openCreateDialog()"
+    >
+    </p-button>
+  </div>
+
+  <!-- Tabla de roles -->
+  <p-table
+    [value]="roles()"
+    [loading]="loading()"
+    showGridlines
+    [tableStyle]="{ 'min-width': '30rem', width: '100%' }"
+    responsiveLayout="scroll"
+  >
+    <ng-template #header>
+      <tr>
+        <th style="width: 10%">ID</th>
+        <th style="width: 40%">Nombre</th>
+        <th style="width: 20%">Estado</th>
+        <th style="width: 30%">Acciones</th>
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-role>
+      <tr>
+        <td>{{ role.id }}</td>
+        <td>{{ role.name }}</td>
+        <td>
+          <p-tag [value]="getStatusLabel(role.status)" [severity]="getStatusSeverity(role.status)">
+          </p-tag>
+        </td>
+        <td>
+          <div class="action-buttons">
+            <p-button
+              label="Editar"
+              size="small"
+              styleClass="edit-button"
+              (onClick)="openEditDialog(role)"
+            >
+            </p-button>
+            <p-button
+              label="Eliminar"
+              size="small"
+              styleClass="delete-button"
+              (onClick)="confirmDelete(role)"
+            >
+            </p-button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+      <tr>
+        <td colspan="4" class="empty-message">
+          <div class="empty-content">
+            <i class="pi pi-info-circle"></i>
+            <span>No hay roles registrados</span>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <!-- Modal para crear rol (solo nombre) -->
+  <p-dialog
+    header="Crear Nuevo Rol"
+    [modal]="true"
+    [visible]="showCreateDialog()"
+    (onHide)="closeCreateDialog()"
+    [style]="{ width: '400px' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <form [formGroup]="createRoleForm" (ngSubmit)="createRole()">
+      <div class="form-field">
+        <label for="create-name">Nombre del Rol *</label>
+        <input
+          id="create-name"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Ingrese el nombre del rol"
+          class="w-full"
+        />
+        @if (createRoleForm.get('name')?.invalid && createRoleForm.get('name')?.touched) {
+          <small class="error-message">
+            @if (createRoleForm.get('name')?.errors?.['required']) {
+              El nombre es requerido
+            }
+            @if (createRoleForm.get('name')?.errors?.['minlength']) {
+              El nombre debe tener al menos 3 caracteres
+            }
+          </small>
+        }
+      </div>
+
+      <div class="modal-actions">
+        <p-button
+          label="Cancelar"
+          severity="secondary"
+          type="button"
+          (onClick)="closeCreateDialog()"
+        >
+        </p-button>
+        <p-button
+          label="Crear"
+          severity="success"
+          type="submit"
+          [disabled]="createRoleForm.invalid"
+        >
+        </p-button>
+      </div>
+    </form>
+  </p-dialog>
+
+  <!-- Modal para editar rol -->
+  <p-dialog
+    header="Editar Rol"
+    [modal]="true"
+    [visible]="showEditDialog()"
+    (onHide)="closeEditDialog()"
+    [style]="{ width: '450px' }"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <form [formGroup]="roleForm" (ngSubmit)="updateRole()">
+      <div class="form-field">
+        <label for="edit-name">Nombre del Rol *</label>
+        <input
+          id="edit-name"
+          type="text"
+          pInputText
+          formControlName="name"
+          placeholder="Ingrese el nombre del rol"
+          class="w-full"
+        />
+        @if (roleForm.get('name')?.invalid && roleForm.get('name')?.touched) {
+          <small class="error-message">
+            @if (roleForm.get('name')?.errors?.['required']) {
+              El nombre es requerido
+            }
+            @if (roleForm.get('name')?.errors?.['minlength']) {
+              El nombre debe tener al menos 3 caracteres
+            }
+          </small>
+        }
+      </div>
+
+      <div class="form-field">
+        <label for="edit-status">Estado *</label>
+        <div class="status-options">
+          <label class="radio-option">
+            <input type="radio" formControlName="status" [value]="true" name="status" />
+            <span>Activo</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" formControlName="status" [value]="false" name="status" />
+            <span>Inactivo</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <p-button label="Cancelar" severity="secondary" type="button" (onClick)="closeEditDialog()">
+        </p-button>
+        <p-button label="Actualizar" severity="warn" type="submit" [disabled]="roleForm.invalid">
+        </p-button>
+      </div>
+    </form>
+  </p-dialog>
+</div>
